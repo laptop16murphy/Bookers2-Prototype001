@@ -1,0 +1,22 @@
+<% if @user.errors.any? %>
+  <%= @user.errors.count %>errors prohibited this obj from being saved
+  <ul>
+  <% @user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+
+<div class="mx-auto" style="width: 200px;">
+  <h2>User info</h2>
+  <%= form_with model: @user, local:true do |f| %>
+  <label for="inputName">name</label>
+  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"name" %>
+  <p>Image</p>
+  <%= f.attachment_field :profile_image %>
+  <p>Introduction</p>
+  <%= f.text_area :introduction %>
+  <p><%= f.submit 'Update User', class: "btn btn-secondary" %></p>
+  <% end %>
+</div>
